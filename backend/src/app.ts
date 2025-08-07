@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import userRoutes from './routes/userRoutes'
+import repoRoutes from './routes/repoRoutes'
 
 dotenv.config();
 
@@ -10,4 +11,5 @@ app.use(express.json());
 
 
 app.use('/api/users', userRoutes);
+app.use('/api/repo', repoRoutes)
 export default app;

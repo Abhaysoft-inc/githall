@@ -15,9 +15,21 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  username  String   @unique
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id         String       @id @default(uuid())
+  username   String       @unique
+  email      String       @unique
+  password   String
+  createdAt  DateTime     @default(now())
+  Repository Repository[]
+}
+
+model Repository {
+  id          String   @id @default(uuid())
+  reponame    String
+  description String?
+  visibility  String
+  license     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+  ownerId     String
+  createdAt   DateTime @default(now())
 }
