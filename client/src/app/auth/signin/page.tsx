@@ -1,16 +1,14 @@
 'use client'
 
 import React, { useState } from 'react'
-import { FiUser, FiMail, FiLock, FiUserCheck, FiEye, FiEyeOff } from 'react-icons/fi'
+import { FiMail, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
 import { FaGithub } from 'react-icons/fa'
 
-const SignupPage = () => {
+const SigninPage = () => {
     const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        username: '',
+        emailOrUsername: '',
         password: ''
-    });
+    })
     const [showPassword, setShowPassword] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
@@ -26,7 +24,8 @@ const SignupPage = () => {
         e.preventDefault()
         setIsLoading(true)
 
-        console.log('Signup data:', formData)
+        // TODO: Implement signin logic
+        console.log('Signin data:', formData)
 
         // Simulate API call
         setTimeout(() => {
@@ -43,55 +42,23 @@ const SignupPage = () => {
                         <FaGithub className="text-4xl text-white mr-2" />
                         <h1 className="text-3xl font-bold text-white">GitHall</h1>
                     </div>
-                    <p className="text-white">Create your account and start coding</p>
+                    <p className="text-white">Welcome back! Sign in to your account</p>
                 </div>
 
-                {/* Signup Form */}
+                {/* Signin Form */}
                 <div className="bg-black border border-white rounded-lg p-8 shadow-lg">
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        {/* Full Name */}
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <FiUser className="h-5 w-5 text-white" />
-                            </div>
-                            <input
-                                type="text"
-                                name="fullName"
-                                value={formData.fullName}
-                                onChange={handleInputChange}
-                                placeholder="Full Name"
-                                required
-                                className="w-full pl-10 pr-4 py-3 bg-black border border-white rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
-                            />
-                        </div>
-
-                        {/* Email */}
+                        {/* Email or Username */}
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <FiMail className="h-5 w-5 text-white" />
                             </div>
                             <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                placeholder="Email Address"
-                                required
-                                className="w-full pl-10 pr-4 py-3 bg-black border border-white rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
-                            />
-                        </div>
-
-                        {/* Username */}
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <FiUserCheck className="h-5 w-5 text-white" />
-                            </div>
-                            <input
                                 type="text"
-                                name="username"
-                                value={formData.username}
+                                name="emailOrUsername"
+                                value={formData.emailOrUsername}
                                 onChange={handleInputChange}
-                                placeholder="Username"
+                                placeholder="Email or Username"
                                 required
                                 className="w-full pl-10 pr-4 py-3 bg-black border border-white rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
                             />
@@ -124,6 +91,13 @@ const SignupPage = () => {
                             </button>
                         </div>
 
+                        {/* Forgot Password */}
+                        <div className="text-right">
+                            <a href="/auth/forgot-password" className="text-white hover:text-gray-300 text-sm transition-colors underline">
+                                Forgot your password?
+                            </a>
+                        </div>
+
                         {/* Submit Button */}
                         <button
                             type="submit"
@@ -133,10 +107,10 @@ const SignupPage = () => {
                             {isLoading ? (
                                 <div className="flex items-center justify-center">
                                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-black mr-2"></div>
-                                    Creating Account...
+                                    Signing In...
                                 </div>
                             ) : (
-                                'Create Account'
+                                'Sign In'
                             )}
                         </button>
                     </form>
@@ -144,9 +118,9 @@ const SignupPage = () => {
                     {/* Footer */}
                     <div className="mt-6 text-center">
                         <p className="text-white">
-                            Already have an account?{' '}
-                            <a href="/auth/signin" className="text-white hover:text-gray-300 font-medium transition-colors underline">
-                                Sign in
+                            Don't have an account?{' '}
+                            <a href="/auth/signup" className="text-white hover:text-gray-300 font-medium transition-colors underline">
+                                Sign up
                             </a>
                         </p>
                     </div>
@@ -154,7 +128,7 @@ const SignupPage = () => {
 
                 {/* Terms */}
                 <div className="mt-6 text-center text-sm text-white">
-                    By creating an account, you agree to our{' '}
+                    By signing in, you agree to our{' '}
                     <a href="/terms" className="text-white hover:text-gray-300 transition-colors underline">
                         Terms of Service
                     </a>{' '}
@@ -168,4 +142,4 @@ const SignupPage = () => {
     )
 }
 
-export default SignupPage
+export default SigninPage
