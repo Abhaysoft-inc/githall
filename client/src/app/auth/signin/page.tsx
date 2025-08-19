@@ -39,10 +39,10 @@ const SigninPage = () => {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <div className="flex items-center justify-center mb-4">
-                        <FaGithub className="text-4xl text-white mr-2" />
-                        <h1 className="text-3xl font-bold text-white">GitHall</h1>
+                        <FaGithub className="text-4xl text-white mr-3" />
+                        <h1 className="text-4xl font-bold text-white tracking-wider" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>GitHall</h1>
                     </div>
-                    <p className="text-white">Welcome back! Sign in to your account</p>
+                    <p className="text-white text-lg font-light tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>Welcome back! Sign in to your account</p>
                 </div>
 
                 {/* Signin Form */}
@@ -61,6 +61,7 @@ const SigninPage = () => {
                                 placeholder="Email or Username"
                                 required
                                 className="w-full pl-10 pr-4 py-3 bg-black border border-white rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
+                                style={{ fontFamily: '"SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace' }}
                             />
                         </div>
 
@@ -77,6 +78,7 @@ const SigninPage = () => {
                                 placeholder="Password"
                                 required
                                 className="w-full pl-10 pr-12 py-3 bg-black border border-white rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200"
+                                style={{ fontFamily: '"SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace' }}
                             />
                             <button
                                 type="button"
@@ -93,7 +95,7 @@ const SigninPage = () => {
 
                         {/* Forgot Password */}
                         <div className="text-right">
-                            <a href="/auth/forgot-password" className="text-white hover:text-gray-300 text-sm transition-colors underline">
+                            <a href="/auth/forgot-password" className="text-white hover:text-gray-300 text-sm transition-colors underline" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
                                 Forgot your password?
                             </a>
                         </div>
@@ -102,7 +104,8 @@ const SigninPage = () => {
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full bg-white hover:bg-gray-200 text-black font-medium py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                            className="w-full bg-white hover:bg-gray-200 text-black font-bold py-3 px-4 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg tracking-wide"
+                            style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
                         >
                             {isLoading ? (
                                 <div className="flex items-center justify-center">
@@ -110,16 +113,16 @@ const SigninPage = () => {
                                     Signing In...
                                 </div>
                             ) : (
-                                'Sign In'
+                                'SIGN IN'
                             )}
                         </button>
                     </form>
 
                     {/* Footer */}
                     <div className="mt-6 text-center">
-                        <p className="text-white">
+                        <p className="text-white" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
                             Don't have an account?{' '}
-                            <a href="/auth/signup" className="text-white hover:text-gray-300 font-medium transition-colors underline">
+                            <a href="/auth/signup" className="text-white hover:text-gray-300 font-semibold transition-colors underline">
                                 Sign up
                             </a>
                         </p>
@@ -127,7 +130,7 @@ const SigninPage = () => {
                 </div>
 
                 {/* Terms */}
-                <div className="mt-6 text-center text-sm text-white">
+                <div className="mt-6 text-center text-sm text-white" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
                     By signing in, you agree to our{' '}
                     <a href="/terms" className="text-white hover:text-gray-300 transition-colors underline">
                         Terms of Service
