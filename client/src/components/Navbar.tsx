@@ -1,6 +1,5 @@
 import React from 'react'
 import { IoIosMenu, IoLogoGithub } from "react-icons/io";
-
 import { IoSearch } from 'react-icons/io5';
 import { RiGitRepositoryCommitsLine } from 'react-icons/ri';
 
@@ -12,7 +11,7 @@ const Navbar = ({ pageTitle }: NavbarProps) => {
     return (
         <>
 
-            <div className="navbar flex items-center px-10 py-3 justify-between border-b">
+            <div className="navbar flex items-center px-6 py-3 justify-between border-b">
                 <div className="left flex items-center space-x-3">
 
                     <div className="bg-transparent border rounded p-1">
