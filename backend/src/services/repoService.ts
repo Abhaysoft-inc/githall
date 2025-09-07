@@ -34,3 +34,34 @@ export const createRepository = async (reponame: string, description: string, vi
 
 
 }
+
+export const getRepo = async(userId:string)=>{
+
+    const repos = await prisma.repository.findMany({
+        where:{
+            ownerId:userId
+        }
+    });
+
+
+    if(!repos) throw new Error("No Repos found");
+
+    return repos;
+
+}
+
+export const getOtherUserRepo = async(username:string)=>{
+    const repos = await prisma.repository.findMany({
+        where:{
+            owner:{
+                username:username,
+            
+            },
+            visibility:"public",
+        },
+
+    });
+
+    if(!repos) throw Error("no repos found");
+    return repos;
+}
