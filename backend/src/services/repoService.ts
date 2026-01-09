@@ -17,6 +17,11 @@ export const createRepository = async (reponame: string, description: string, vi
 
     if (checkExistingRepo) throw new Error(`repo ${reponame} already exists!`);
 
+    // send request to the git server to create repo na
+
+
+
+
     const repo = await prisma.repository.create({
         data: {
             reponame,
@@ -35,33 +40,36 @@ export const createRepository = async (reponame: string, description: string, vi
 
 }
 
-export const getRepo = async(userId:string)=>{
+
+
+
+export const getRepo = async (userId: string) => {
 
     const repos = await prisma.repository.findMany({
-        where:{
-            ownerId:userId
+        where: {
+            ownerId: userId
         }
     });
 
 
-    if(!repos) throw new Error("No Repos found");
+    if (!repos) throw new Error("No Repos found");
 
     return repos;
 
 }
 
-export const getOtherUserRepo = async(username:string)=>{
+export const getOtherUserRepo = async (username: string) => {
     const repos = await prisma.repository.findMany({
-        where:{
-            owner:{
-                username:username,
-            
+        where: {
+            owner: {
+                username: username,
+
             },
-            visibility:"public",
+            visibility: "public",
         },
 
     });
 
-    if(!repos) throw Error("no repos found");
+    if (!repos) throw Error("no repos found");
     return repos;
 }
