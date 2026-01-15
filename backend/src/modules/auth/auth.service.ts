@@ -1,6 +1,6 @@
-import { PrismaClient } from '../generated/prisma'
-import { hashPassword, comparePasswords } from '../utils/hash'
-import { generateToken } from '../utils/jwt';
+import { PrismaClient } from '../../generated/prisma'
+import { hashPassword, comparePasswords } from '../../utils/hash'
+import { generateToken } from '../../utils/jwt';
 const prisma = new PrismaClient();
 
 // register user

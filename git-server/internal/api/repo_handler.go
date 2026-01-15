@@ -9,6 +9,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// creates bare repo
+
 func CreateRepo(c *gin.Context) {
 	// request body
 	var body struct {

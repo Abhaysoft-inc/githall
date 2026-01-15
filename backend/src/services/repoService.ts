@@ -17,10 +17,30 @@ export const createRepository = async (reponame: string, description: string, vi
 
     if (checkExistingRepo) throw new Error(`repo ${reponame} already exists!`);
 
-    // send request to the git server to create repo na
+    // Get user information to send to git server
+    const user = await prisma.user.findUnique({
+        where: { id: userId }
+    });
 
+    if (!user) throw new Error("User not found");
 
+    // Send request to the git server to create repo
 
+    const gitServerResponse = await fetch('http://localhost:8080/repos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user: user.username,
+            repo: reponame
+        })
+    });
+
+    if (!gitServerResponse.ok) {
+        const error = await gitServerResponse.json();
+        throw new Error(`Failed to create git repository: ${error.error || 'Unknown error'}`);
+    }
 
     const repo = await prisma.repository.create({
         data: {

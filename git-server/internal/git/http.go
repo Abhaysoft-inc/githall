@@ -14,8 +14,11 @@ import (
 )
 
 func GitHTTPBackend(w http.ResponseWriter, r *http.Request) {
+
+	// execute git http-backend command on the server
 	cmd := exec.Command("git", "http-backend")
 
+	// env vars
 	cmd.Env = append(os.Environ(),
 		"GIT_PROJECT_ROOT="+config.RepoRoot,
 		"GIT_HTTP_EXPORT_ALL=1",

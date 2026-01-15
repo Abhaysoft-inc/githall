@@ -10,6 +10,7 @@ import (
 // create bare repo
 
 func CreateBareRepo(path string) error {
+	// makes directory
 	if err := os.MkdirAll(path, 0755); err != nil {
 		return err
 	}
@@ -29,6 +30,7 @@ func CreateBareRepo(path string) error {
 	return nil
 }
 
+// delete repo
 func DeleteRepo(path string) error {
 	return os.RemoveAll(path)
 }
