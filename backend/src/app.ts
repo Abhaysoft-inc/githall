@@ -1,15 +1,18 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import userRoutes from './routes/userRoutes'
-import repoRoutes from './routes/repoRoutes'
-
 dotenv.config();
+
+import userRoutes from './modules/user/user.routes'
+import repoRoutes from './routes/repoRoutes'
+import authRoutes from './modules/auth/auth.routes'
+
 
 const app = express();
 
 app.use(express.json());
 
+app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes);
+app.use('/api/repo', repoRoutes);
 
-app.use('/api/users', userRoutes);
-app.use('/api/repo', repoRoutes)
 export default app;
