@@ -15,6 +15,7 @@ func main() {
 
 	r.POST("/repos", api.CreateRepo)
 	r.GET("/repos/:user/:repo/branches", api.ListBranches)
+	r.GET("/repos/:user/:repo/tree", api.GetRepoTree)
 
 	// Git HTTP protocol endpoints (for git clone, push, pull)
 	// Must come after specific API routes to avoid conflicts

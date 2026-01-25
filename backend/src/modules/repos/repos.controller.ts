@@ -70,3 +70,14 @@ export const getRepos = async (req: AuthRequest, res: Response) => {
 
 }
 
+
+// view files and folders of a repo
+
+export const getRepoFiles = async (req, res) => {
+    const { username, repoName, folderPath = "" } = req.params;
+    // need to call git ls-tree HEAD in the git-server to show alls the files here in response
+
+
+
+}
+
