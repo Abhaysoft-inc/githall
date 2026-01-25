@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { createRepository, getOtherUserRepo, getRepo } from "../services/repoService";
-import { AuthRequest } from "../modules/auth/auth.middleware";
-import { CreateRepoInput } from "../types/repo";
+import { createRepository, getOtherUserRepo, getRepo } from "./repo.service";
+import { AuthRequest } from "../auth/auth.middleware";
+import { CreateRepoInput } from "./repo.types";
 
 
 // create repo

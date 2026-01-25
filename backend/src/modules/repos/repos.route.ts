@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { createRepo, getMyRepos, getRepos } from "../controllers/repoController";
-import { authenticate } from "../modules/auth/auth.middleware";
+import { createRepo, getMyRepos, getRepos } from "./repos.controller";
+import { authenticate } from "../auth/auth.middleware";
 
 
 const router = Router();
