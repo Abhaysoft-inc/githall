@@ -2,6 +2,9 @@ import { Request, Response } from "express";
 import { createRepository, getOtherUserRepo, getRepo } from "./repo.service";
 import { AuthRequest } from "../auth/auth.middleware";
 import { CreateRepoInput } from "./repo.types";
+import { PrismaClient } from "../../generated/prisma";
+
+const prisma = new PrismaClient();
 
 
 // create repo
@@ -70,14 +73,52 @@ export const getRepos = async (req: AuthRequest, res: Response) => {
 
 }
 
+// view repo
+
+export const viewRepo = async (req: Request, res: Response) => {
+    try {
+        const { username, repoName } = req.params;
+
+        const repo = await prisma.repository.findFirst({
+            where: {
+                owner: {
+                    username: username,
+                },
+                reponame: repoName,
+                visibility: "public"
+
+            }
+        });
+
+        return res.status(200).json({
+            repo
+        })
+
+        // if (!repo) return res.status(404).json({
+        //     error: "repo not found",
+        // });
+
+        // return res.status(200).json({
+        //     repo
+        // })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            error: "something went wrong"
+        });
+
+    }
+
+}
+
 
 // view files and folders of a repo
 
-export const getRepoFiles = async (req, res) => {
-    const { username, repoName, folderPath = "" } = req.params;
-    // need to call git ls-tree HEAD in the git-server to show alls the files here in response
+// export const getRepoFiles = async (req, res) => {
+//     const { username, repoName, folderPath = "" } = req.params;
+//     // need to call git ls-tree HEAD in the git-server to show alls the files here in response
 
 
 
-}
+// }
 

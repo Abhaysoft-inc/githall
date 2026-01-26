@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import userRoutes from './modules/user/user.routes'
-import repoRoutes from './routes/repoRoutes'
+import repoRoutes from './modules/repos/repos.route'
 import authRoutes from './modules/auth/auth.routes'
 
 

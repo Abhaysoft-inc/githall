@@ -2,18 +2,21 @@ import { Request, Response } from 'express';
 import { registerUser, loginUser } from './auth.service';
 import { RegisterInput, LoginInput } from './auth.types';
 
+// adding validation
+
 export const register = async (req: Request, res: Response) => {
     try {
         const { username, email, password } = req.body as RegisterInput;
 
         const user = await registerUser(username, email, password);
 
-        res.status(201).json({ user });
+        return res.status(201).json({ user });
 
 
     } catch (error) {
-        res.status(400).json({ error: (error as Error).message });
+        console.log({ error: (error as Error).message });
 
+        return res.status(500).json({ error: "something went wrong" });
     };
 };
 

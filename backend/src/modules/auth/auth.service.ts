@@ -8,6 +8,7 @@ const prisma = new PrismaClient();
 export const registerUser = async (username: string, email: string, password: string) => {
 
     // find existing user
+    // username bhi to unique h
 
     const existing = await prisma.user.findUnique({
         where: { email }
@@ -28,6 +29,8 @@ export const registerUser = async (username: string, email: string, password: st
     return user;
 
 };
+
+
 
 // login user
 
